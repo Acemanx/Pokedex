@@ -2,7 +2,6 @@ import React from "react";
 import {
   View,
   Text,
-  StyleSheet,
   FlatList,
   ActivityIndicator,
   Image,
@@ -37,7 +36,7 @@ class List extends React.Component {
   };
 
   getPokemons() {
-    const api = `https://pokeapi.co/api/v2/pokemon/?limit=30&offset=${
+    const api = `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${
       this.state.quantity
     }`;
     fetch(api)
@@ -48,7 +47,7 @@ class List extends React.Component {
   }
 
   getMorePokemons() {
-    this.setState({ quantity: this.state.quantity + 10 }, this.getPokemons());
+    this.setState({ quantity: this.state.quantity + 20 }, this.getPokemons());
   }
 
   componentDidMount() {
@@ -59,9 +58,15 @@ class List extends React.Component {
     url = url.replace(/\//g, "").slice(28);
     return url;
   }
+
   renderCharacter(item) {
+    const { navigate } = this.props.navigation;
+
     return (
-      <TouchableOpacity style={styles.pokemonCard}>
+      <TouchableOpacity
+        style={styles.pokemonCard}
+        onPress={() => navigate("PokemonInfo", { screen: "PokemonInfo" })}
+      >
         <Image
           source={{
             uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.cutCharacter(

@@ -19,6 +19,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  modal: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "#00ff00",
+    padding: 100
+  },
+  text: {
+    color: "#3f2949",
+    marginTop: 10
   }
 });
 

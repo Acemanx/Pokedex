@@ -4,6 +4,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import Home from "./app/screens/Home";
 import PokemonList from "./app/screens/PokemonList";
+import PokemonInfo from "./app/screens/PokemonInfo";
 
 /*
 export default function App() {
@@ -19,6 +20,9 @@ const appNavigator = createStackNavigator({
   },
   PokemonList: {
     screen: PokemonList
+  },
+  PokemonInfo: {
+    screen: PokemonInfo
   }
 });
 
