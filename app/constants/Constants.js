@@ -3,3 +3,5 @@ export const POKE_API_ROUTE =
 
 export const POKEMON_IMAGE =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+
+export const POKEMON_INFO = "https://pokeapi.co/api/v2/pokemon/";
