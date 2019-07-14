@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { yellow } from "ansi-colors";
 
 const styles = StyleSheet.create({
   pokemonCard: {
@@ -14,6 +15,12 @@ const styles = StyleSheet.create({
     borderColor: "black",
     backgroundColor: "#D3D3D3",
     margin: 8
+  },
+  pokemonInfoCard: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "yellow"
   },
   container: {
     flex: 1,

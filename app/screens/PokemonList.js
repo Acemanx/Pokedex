@@ -7,11 +7,8 @@ import {
   Image,
   TouchableOpacity
 } from "react-native";
-import { SearchBar } from "react-native-elements";
+import * as Constants from "../constants/Constants";
 import styles from "./styles";
-
-//POR EJEMPLO ESTO METERLO EN EL ARCHIVO DE CONSTANTES
-//const api = "https://swapi.co/api/people/";
 
 //AL HACER LAS PETICIONES A LA API PONER LA PETICION DENTRO DE UN TRY CATCH PARA TRAER EL
 //ERROR Y CONTROLAR
@@ -22,7 +19,6 @@ export default class List extends React.Component {
 
     this.state = {
       list: [],
-      search: "",
       quantity: 0
     };
     //Como renderCharacter no es arrowfunction, se bindea para que tome el contexto
@@ -35,9 +31,7 @@ export default class List extends React.Component {
   };
 
   getPokemons() {
-    const api = `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${
-      this.state.quantity
-    }`;
+    const api = `${Constants.RETRIEVE_POKEMONS_URI}${this.state.quantity}`;
     fetch(api)
       .then(res => res.json())
       .then(res =>
@@ -45,7 +39,8 @@ export default class List extends React.Component {
           list: this.state.list.concat(res.results),
           quantity: this.state.quantity + 20
         })
-      );
+      )
+      .catch(console.warn(Constants.ERROR_RETRIEVING_POKEMONS));
   }
 
   componentDidMount() {
@@ -70,9 +65,9 @@ export default class List extends React.Component {
       >
         <Image
           source={{
-            uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.cutCharacter(
-              item.url
-            )}.png`
+            uri: `${Constants.POKEMON_IMAGE_URI}${this.cutCharacter(item.url)}${
+              Constants.PNG
+            }`
           }}
           style={{ width: 150, height: 150 }}
         />
@@ -85,11 +80,6 @@ export default class List extends React.Component {
 
     return (
       <View>
-        <SearchBar
-          placeholder="Find a pokemon..."
-          onChangeText={this.updateSearch}
-          value={search}
-        />
         {list ? (
           <FlatList
             horizontal={false}

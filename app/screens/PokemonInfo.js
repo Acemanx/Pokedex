@@ -1,18 +1,20 @@
 import React from "react";
 import styles from "./styles";
-import { Text, View, Image, ActivityIndicator, Header } from "react-native";
-import * as URLS from "../constants/Constants";
+import { Text, View, Image, ActivityIndicator } from "react-native";
+import * as Constants from "../constants/Constants";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class PokemonInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
       pokemonID: "",
-      weight: "",
+      name: "",
       type: [],
       moves: [],
-      movesUrl: ""
+      movesUrl: "",
+      height: "",
+      weight: ""
     };
     this.getPokemonInfo = this.getPokemonInfo.bind(this);
   }
@@ -29,9 +31,7 @@ export default class PokemonInfo extends React.Component {
   }
 
   getPokemonInfo() {
-    //console.warn(URLS.POKEMON_INFO);
-    // console.warn("statename" + state.name);
-    const api = `${URLS.POKEMON_INFO}${this.state.name}`;
+    const api = `${Constants.POKEMON_INFO}${this.state.name}`;
     fetch(api)
       .then(res => res.json())
       .then(res => {
@@ -42,9 +42,10 @@ export default class PokemonInfo extends React.Component {
         this.setState(
           {
             pokemonID: res.sprites.front_default,
-            weight: res.weight,
             type: types,
-            movesUrl: res.types[0].type.url
+            movesUrl: res.types[0].type.url,
+            weight: res.weight,
+            height: res.height
           },
           () => {
             console.warn(this.state);
@@ -67,18 +68,19 @@ export default class PokemonInfo extends React.Component {
           moves: movements
         });
         console.warn(movements);
-        //console.warn("entro al fetch");
       });
   }
 
   render() {
     return (
-      /* <View style={styles.container}>
-        <Text>{this.props.navigation.getParam("name")}</Text>
-      </View>*/
-
-      <View style={styles.container}>
-        <Text style={styles.titleText}>{this.state.name}</Text>
+      <LinearGradient
+        colors={["rgba(61, 125, 202, 1)", "transparent"]}
+        style={styles.pokemonInfoCard}
+      >
+        <Image
+          source={require("../../assets/pokemon_logo.png")}
+          style={{ width: 300, height: 110 }}
+        />
         {this.state.pokemonID ? (
           <Image
             source={this.state.pokemonID ? { uri: this.state.pokemonID } : null}
@@ -87,35 +89,26 @@ export default class PokemonInfo extends React.Component {
         ) : (
           <ActivityIndicator size="large" />
         )}
-        <Text>{this.state.weight} pounds</Text>
+        <Text style={styles.titleText}>{this.state.name}</Text>
+
+        <Text>
+          {Constants.WEIGHT}
+          {this.state.weight}
+          {Constants.POUNDS}
+        </Text>
+        <Text>
+          {Constants.HEIGHT}
+          {this.state.height}
+          {Constants.HEIGHT_VALUE}
+        </Text>
         {this.state.type.map(key => {
-          const colorText = TYPES_COLORS[key];
-          return <Text style={{ color: `#${colorText}` }}>{key}</Text>;
+          const colorText = Constants.TYPES_COLORS[key];
+          return <Text style={{ color: `${colorText}` }}>{key}</Text>;
         })}
         {this.state.moves.map(key => {
           return <Text>{key}</Text>;
         })}
-      </View>
+      </LinearGradient>
     );
   }
 }
-const TYPES_COLORS = {
-  bug: "B1C12E",
-  dark: "4F3A2D",
-  dragon: "755EDF",
-  electric: "FCBC17",
-  fairy: "F4B1F4",
-  fighting: "823551D",
-  fire: "E73B0C",
-  flying: "A3B3F7",
-  ghost: "6060B2",
-  grass: "74C236",
-  ground: "D3B357",
-  ice: "A3E7FD",
-  normal: "C8C4BC",
-  poison: "934594",
-  psychic: "ED4882",
-  rock: "B9A156",
-  steel: "B5B5C3",
-  water: "3295F6"
-};
