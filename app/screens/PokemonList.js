@@ -42,12 +42,16 @@ class List extends React.Component {
     fetch(api)
       .then(res => res.json())
       .then(res =>
-        this.setState({ list: this.state.list.concat(res.results) })
+        this.setState({
+          list: this.state.list.concat(res.results),
+          quantity: this.state.quantity + 20
+        })
       );
   }
 
   getMorePokemons() {
-    this.setState({ quantity: this.state.quantity + 20 }, this.getPokemons());
+    console.warn("more pokeballs pika");
+    this.getPokemons();
   }
 
   componentDidMount() {
@@ -64,6 +68,7 @@ class List extends React.Component {
 
     return (
       <TouchableOpacity
+        value={item.name}
         style={styles.pokemonCard}
         onPress={() =>
           navigate("PokemonInfo", { screen: "PokemonInfo", name: item.name })
@@ -99,7 +104,7 @@ class List extends React.Component {
             keyExtractor={(item, index) => index.toString()}
             //keyExtractor={item => item.name}
             renderItem={({ item }) => this.renderCharacter(item)}
-            onEndReached={this.getMorePokemons}
+            onEndReached={this.getPokemons}
           />
         ) : (
           <ActivityIndicator size="large" />
