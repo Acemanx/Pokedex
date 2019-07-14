@@ -35,7 +35,8 @@ class PokemonInfo extends React.Component {
       .then(res =>
         this.setState(
           {
-            pokemonID: res.sprites.front_default
+            pokemonID: res.sprites.front_default,
+            weight: res.weight
           },
           () => {
             console.warn(this.state);
@@ -50,15 +51,18 @@ class PokemonInfo extends React.Component {
         <Text>{this.props.navigation.getParam("name")}</Text>
       </View>*/
       <View style={styles.container}>
+        <Text style={styles.titleText}>{this.state.name}</Text>
+
         {this.state.pokemonID ? (
           <Image
             source={this.state.pokemonID ? { uri: this.state.pokemonID } : null}
-            style={{ width: 150, height: 150 }}
+            style={{ width: 200, height: 200 }}
           />
         ) : (
           <ActivityIndicator size="large" />
         )}
-        <Text>{this.state.name}</Text>
+
+        <Text>{this.state.weight} pounds</Text>
       </View>
     );
   }
