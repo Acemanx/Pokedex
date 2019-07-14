@@ -6,11 +6,12 @@ class PokemonInfo extends React.Component {
   constructor(props) {
     super(props);
   }
+  getPokemonInfo() {}
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is pokemon info</Text>
+        <Text>{this.props.navigation.getParam("name")}</Text>
       </View>
     );
   }

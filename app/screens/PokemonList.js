@@ -65,7 +65,9 @@ class List extends React.Component {
     return (
       <TouchableOpacity
         style={styles.pokemonCard}
-        onPress={() => navigate("PokemonInfo", { screen: "PokemonInfo" })}
+        onPress={() =>
+          navigate("PokemonInfo", { screen: "PokemonInfo", name: item.name })
+        }
       >
         <Image
           source={{
