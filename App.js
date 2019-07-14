@@ -5,6 +5,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import Home from "./app/screens/Home";
 import PokemonList from "./app/screens/PokemonList";
 import PokemonInfo from "./app/screens/PokemonInfo";
+import Login from "./app/screens/Login";
 
 /*
 export default function App() {

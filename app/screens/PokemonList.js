@@ -16,7 +16,7 @@ import styles from "./styles";
 //AL HACER LAS PETICIONES A LA API PONER LA PETICION DENTRO DE UN TRY CATCH PARA TRAER EL
 //ERROR Y CONTROLAR
 
-class List extends React.Component {
+export default class List extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,7 +28,6 @@ class List extends React.Component {
     //Como renderCharacter no es arrowfunction, se bindea para que tome el contexto
     this.renderCharacter = this.renderCharacter.bind(this);
     this.getPokemons = this.getPokemons.bind(this);
-    this.getMorePokemons = this.getMorePokemons.bind(this);
   }
 
   updateSearch = search => {
@@ -47,11 +46,6 @@ class List extends React.Component {
           quantity: this.state.quantity + 20
         })
       );
-  }
-
-  getMorePokemons() {
-    console.warn("more pokeballs pika");
-    this.getPokemons();
   }
 
   componentDidMount() {
@@ -113,5 +107,3 @@ class List extends React.Component {
     );
   }
 }
-
-export default List;
