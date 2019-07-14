@@ -5,11 +5,11 @@ import {
   StyleSheet,
   FlatList,
   ActivityIndicator,
-  Image
+  Image,
+  TouchableOpacity
 } from "react-native";
 import { SearchBar } from "react-native-elements";
-
-//import { POKE_API_ROUTE } from "./constants/Constants.js";
+import styles from "./styles";
 
 //POR EJEMPLO ESTO METERLO EN EL ARCHIVO DE CONSTANTES
 //const api = "https://swapi.co/api/people/";
@@ -61,7 +61,7 @@ class List extends React.Component {
   }
   renderCharacter(item) {
     return (
-      <View style={styles.pokemonCard}>
+      <TouchableOpacity style={styles.pokemonCard}>
         <Image
           source={{
             uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.cutCharacter(
@@ -71,7 +71,7 @@ class List extends React.Component {
           style={{ width: 150, height: 150 }}
         />
         <Text>{item.name}</Text>
-      </View>
+      </TouchableOpacity>
     );
   }
   render() {
@@ -103,19 +103,3 @@ class List extends React.Component {
 }
 
 export default List;
-
-const styles = StyleSheet.create({
-  pokemonCard: {
-    flex: 1,
-    flexWrap: "wrap",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-around",
-    height: 200,
-    width: 150,
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "black",
-    margin: 10
-  }
-});

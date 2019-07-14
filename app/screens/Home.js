@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
-
+import styles from "./styles";
 const Home = ({ navigation }) => (
   <View style={[styles.container]}>
     <Text>Welcome to Pokedex</Text>
@@ -11,13 +11,5 @@ const Home = ({ navigation }) => (
     />
   </View>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});
 
 export default Home;
