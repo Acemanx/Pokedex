@@ -81,7 +81,6 @@ export default class List extends React.Component {
 
   renderCharacter(item) {
     const { navigate } = this.props.navigation;
-
     return (
       <TouchableOpacity
         value={item.name}
@@ -98,13 +97,12 @@ export default class List extends React.Component {
           }}
           style={styles.pokemonListImage}
         />
-        <Text>{item.name}</Text>
+        <Text style={styles.informationText}>{item.name}</Text>
       </TouchableOpacity>
     );
   }
   render() {
     const { list } = this.state;
-
     return (
       <LinearGradient colors={["rgba(61, 125, 202, 1)", "transparent"]}>
         <View>

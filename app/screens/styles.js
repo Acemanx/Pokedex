@@ -7,11 +7,11 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    height: 180,
+    height: 173,
     width: 150,
     borderRadius: 10,
     backgroundColor: "#FFCB05",
-    margin: 8
+    margin: 7
   },
   pokemonInfoCard: {
     flex: 1,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow"
   },
   informationText: {
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: "bold"
   },
   boxStyle: {
