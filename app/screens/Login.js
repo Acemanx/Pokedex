@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { ScrollView, Text, TextInput, View, Button, Alert } from "react-native";
+import {
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+  Button,
+  Alert,
+  Image
+} from "react-native";
 import styles from "./styles";
 
 import * as Constants from "../constants/Constants";
@@ -29,7 +37,11 @@ export default class Login extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.loginContainer}>
+        <Image
+          source={require("../../assets/pokeball_big.png")}
+          style={{ width: 150, height: 150 }}
+        />
         <Text style={{ fontSize: 27 }}>Login</Text>
         <TextInput
           placeholder="Username"

@@ -9,10 +9,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     height: 180,
     width: 150,
-    borderWidth: 1,
     borderRadius: 10,
-    borderColor: "black",
-    backgroundColor: "#D3D3D3",
+    backgroundColor: "#FFCB05",
     margin: 8
   },
   pokemonInfoCard: {
@@ -39,6 +37,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
+  loginContainer: {
+    backgroundColor: "#ee1515",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -62,6 +66,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     margin: 4
+  },
+  titleCentered: {
+    textAlign: "center"
   },
   typeText: {
     color: "black",

@@ -30,7 +30,19 @@ export default class PokemonInfo extends React.Component {
       }
     );
   }
-  logOut() {}
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitleStyle: {
+        textAlign: "center",
+        flex: 1
+      },
+      headerStyle: {
+        backgroundColor: "#FFCB05"
+      },
+      title: navigation.getParam("name"),
+      headerRight: <View />
+    };
+  };
   getPokemonInfo() {
     const api = `${Constants.POKEMON_INFO}${this.state.name}`;
     fetch(api)

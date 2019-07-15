@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import * as Constants from "../constants/Constants";
 import styles from "./styles";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class List extends React.Component {
   constructor(props) {
@@ -25,7 +26,15 @@ export default class List extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: (
+      title: "Pokedex",
+      headerTitleStyle: {
+        textAlign: "center",
+        flex: 1
+      },
+      headerStyle: {
+        backgroundColor: "#FFCB05"
+      },
+      headerLeft: (
         <Image
           source={require("../../assets/pokeball.png")}
           style={styles.pokeballLogo}
@@ -98,21 +107,23 @@ export default class List extends React.Component {
     const { list } = this.state;
 
     return (
-      <View>
-        {list ? (
-          <FlatList
-            horizontal={false}
-            numColumns={2}
-            data={list}
-            keyExtractor={(item, index) => index.toString()}
-            //keyExtractor={item => item.name}
-            renderItem={({ item }) => this.renderCharacter(item)}
-            onEndReached={this.getPokemons}
-          />
-        ) : (
-          <ActivityIndicator size="large" />
-        )}
-      </View>
+      <LinearGradient colors={["rgba(61, 125, 202, 1)", "transparent"]}>
+        <View>
+          {list ? (
+            <FlatList
+              horizontal={false}
+              numColumns={2}
+              data={list}
+              keyExtractor={(item, index) => index.toString()}
+              //keyExtractor={item => item.name}
+              renderItem={({ item }) => this.renderCharacter(item)}
+              onEndReached={this.getPokemons}
+            />
+          ) : (
+            <ActivityIndicator size="large" />
+          )}
+        </View>
+      </LinearGradient>
     );
   }
 }
