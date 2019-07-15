@@ -9,26 +9,95 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     height: 180,
     width: 150,
-    borderWidth: 1,
     borderRadius: 10,
-    borderColor: "black",
-    backgroundColor: "#D3D3D3",
+    backgroundColor: "#FFCB05",
     margin: 8
+  },
+  pokemonInfoCard: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "yellow"
+  },
+  flatListContainer: {
+    backgroundColor: "yellow"
+  },
+  informationText: {
+    fontSize: 13,
+    fontWeight: "bold"
+  },
+  boxStyle: {
+    height: 30,
+    width: 100,
+    borderWidth: 1,
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: "#3D7DCA",
+    margin: 5,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  loginContainer: {
+    backgroundColor: "#ee1515",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  userInput: {
+    borderWidth: 1,
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: "#FFFFFF",
+    marginTop: 10,
+    textAlign: "center"
+  },
+  loginButton: {
+    backgroundColor: "#222224"
   },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
   },
-  modal: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "#00ff00",
-    padding: 100
+  titleText: {
+    fontSize: 20,
+    fontWeight: "bold"
   },
-  text: {
-    color: "#3f2949",
-    marginTop: 10
+  titleMoves: {
+    fontSize: 17,
+    fontWeight: "bold",
+    color: "#003A70"
+  },
+  typeContainer: {
+    width: 55,
+    height: 55,
+    borderWidth: 1,
+    borderRadius: 30,
+    borderColor: "transparent",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 4
+  },
+  titleCentered: {
+    textAlign: "center"
+  },
+  typeText: {
+    color: "black",
+    fontWeight: "bold"
+  },
+  row: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around"
+  },
+  pokeballLogo: {
+    marginLeft: 10,
+    width: 30,
+    height: 30
+  },
+  logoutLogo: {
+    marginRight: 6
   }
 });
 
