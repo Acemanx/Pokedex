@@ -19,7 +19,6 @@ export default class List extends React.Component {
       list: [],
       quantity: 0
     };
-    //Como renderCharacter no es arrowfunction, se bindea para que tome el contexto
     this.renderCharacter = this.renderCharacter.bind(this);
     this.getPokemons = this.getPokemons.bind(this);
   }
@@ -61,14 +60,18 @@ export default class List extends React.Component {
 
   getPokemons() {
     const api = `${Constants.RETRIEVE_POKEMONS_URI}${this.state.quantity}`;
+    console.warn(api);
     fetch(api)
       .then(res => res.json())
       .then(res =>
         this.setState({
-          list: this.state.list.concat(res.results),
-          quantity: this.state.quantity + 20
+          list: this.state.list.concat(res.results)
         })
       );
+
+    this.setState({
+      quantity: this.state.quantity + 20
+    });
   }
 
   componentDidMount() {
@@ -82,7 +85,6 @@ export default class List extends React.Component {
 
   renderCharacter(item) {
     const { navigate } = this.props.navigation;
-
     return (
       <TouchableOpacity
         value={item.name}
@@ -97,21 +99,19 @@ export default class List extends React.Component {
               Constants.PNG
             }`
           }}
-          style={{ width: 150, height: 150 }}
+          style={styles.pokemonListImage}
         />
-        <Text>{item.name}</Text>
+        <Text style={styles.informationText}>{item.name}</Text>
       </TouchableOpacity>
     );
   }
   render() {
     const { list } = this.state;
-
     return (
       <LinearGradient colors={["rgba(61, 125, 202, 1)", "transparent"]}>
         <View>
           {list ? (
             <FlatList
-              horizontal={false}
               numColumns={2}
               data={list}
               keyExtractor={index => index.toString()}
