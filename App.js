@@ -14,7 +14,7 @@ export default function App() {
 */
 const appNavigator = createStackNavigator({
   Home: {
-    screen: Home,
+    screen: Login,
     navigationOptions: {
       header: null
     }

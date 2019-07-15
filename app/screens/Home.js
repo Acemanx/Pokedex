@@ -10,6 +10,8 @@ const Home = ({ navigation }) => (
       title="Go to list"
       onPress={() => navigation.navigate("PokemonList")}
     />
+
+    <Button onPress={this.props.onLogoutPress} title="Logout" />
   </View>
 );
 

@@ -5,7 +5,8 @@ import {
   FlatList,
   ActivityIndicator,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from "react-native";
 import * as Constants from "../constants/Constants";
 import styles from "./styles";
@@ -25,10 +26,21 @@ export default class List extends React.Component {
     this.renderCharacter = this.renderCharacter.bind(this);
     this.getPokemons = this.getPokemons.bind(this);
   }
+  static navigationOptions = {
+    headerTitle: (
+      <Image
+        source={require("../../assets/pokeball.png")}
+        style={styles.pokeballLogo}
+      />
+    ),
+    headerRight: <Button onPress={this.logOut} title="Log Out" />
+  };
 
   updateSearch = search => {
     this.setState({ search });
   };
+
+  logOut() {}
 
   getPokemons() {
     const api = `${Constants.RETRIEVE_POKEMONS_URI}${this.state.quantity}`;
@@ -76,7 +88,7 @@ export default class List extends React.Component {
     );
   }
   render() {
-    const { list, search } = this.state;
+    const { list } = this.state;
 
     return (
       <View>

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles";
-import { Text, View, Image, ActivityIndicator } from "react-native";
+import { Text, View, Image, ActivityIndicator, Button } from "react-native";
 import * as Constants from "../constants/Constants";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -18,6 +18,7 @@ export default class PokemonInfo extends React.Component {
     };
     this.getPokemonInfo = this.getPokemonInfo.bind(this);
   }
+
   componentDidMount() {
     const pokemonName = this.props.navigation.getParam("name");
     this.setState(
@@ -29,7 +30,6 @@ export default class PokemonInfo extends React.Component {
       }
     );
   }
-
   getPokemonInfo() {
     const api = `${Constants.POKEMON_INFO}${this.state.name}`;
     fetch(api)
@@ -105,9 +105,11 @@ export default class PokemonInfo extends React.Component {
           const colorText = Constants.TYPES_COLORS[key];
           return <Text style={{ color: `${colorText}` }}>{key}</Text>;
         })}
-        {this.state.moves.map(key => {
-          return <Text>{key}</Text>;
-        })}
+        <View style={styles.row}>
+          {this.state.moves.map(key => {
+            return <Text style={styles.informationText}>{key}</Text>;
+          })}
+        </View>
       </LinearGradient>
     );
   }

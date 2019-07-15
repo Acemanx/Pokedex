@@ -44,3 +44,7 @@ export const HEIGHT_VALUE = " inches";
 export const WEIGHT = "Weight: ";
 
 export const POUNDS = " pounds";
+
+export const USER = "User";
+
+export const PASSWORD = "Bootcamp";
