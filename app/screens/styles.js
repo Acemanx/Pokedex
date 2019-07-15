@@ -49,7 +49,26 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: "#FFFFFF",
     marginTop: 10,
-    textAlign: "center"
+    textAlign: "center",
+    color: "#FFF"
+  },
+  pokemonListImage: {
+    width: 150,
+    height: 150
+  },
+  pokemonInfoImage: {
+    width: 200,
+    height: 170
+  },
+  pokemonLogo: {
+    width: 300,
+    height: 110,
+    marginTop: 6
+  },
+  pokeballLogin: {
+    width: 150,
+    height: 150,
+    marginBottom: 15
   },
   loginButton: {
     backgroundColor: "#222224"

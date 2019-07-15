@@ -61,7 +61,6 @@ export default class PokemonInfo extends React.Component {
             height: res.height
           },
           () => {
-            console.warn(this.state);
             this.getPokemonMoves();
           }
         );
@@ -80,7 +79,6 @@ export default class PokemonInfo extends React.Component {
         this.setState({
           moves: movements
         });
-        console.warn(movements);
       });
   }
 
@@ -92,12 +90,12 @@ export default class PokemonInfo extends React.Component {
       >
         <Image
           source={require("../../assets/pokemon_logo.png")}
-          style={{ width: 300, height: 110 }}
+          style={styles.pokemonLogo}
         />
         {this.state.pokemonID ? (
           <Image
             source={this.state.pokemonID ? { uri: this.state.pokemonID } : null}
-            style={{ width: 200, height: 170 }}
+            style={styles.pokemonInfoImage}
           />
         ) : (
           <ActivityIndicator size="large" />

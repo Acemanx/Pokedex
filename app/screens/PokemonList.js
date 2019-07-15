@@ -19,7 +19,6 @@ export default class List extends React.Component {
       list: [],
       quantity: 0
     };
-    //Como renderCharacter no es arrowfunction, se bindea para que tome el contexto
     this.renderCharacter = this.renderCharacter.bind(this);
     this.getPokemons = this.getPokemons.bind(this);
   }
@@ -97,7 +96,7 @@ export default class List extends React.Component {
               Constants.PNG
             }`
           }}
-          style={{ width: 150, height: 150 }}
+          style={styles.pokemonListImage}
         />
         <Text>{item.name}</Text>
       </TouchableOpacity>

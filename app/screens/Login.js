@@ -39,7 +39,7 @@ export default class Login extends Component {
       <ScrollView style={styles.loginContainer}>
         <Image
           source={require("../../assets/pokeball_big.png")}
-          style={{ width: 150, height: 150, marginBottom: 15 }}
+          style={styles.pokeballLogin}
         />
 
         <TextInput
