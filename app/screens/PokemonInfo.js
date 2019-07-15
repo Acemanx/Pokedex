@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles";
-import { Text, View, Image, ActivityIndicator, Button } from "react-native";
+import { Text, View, Image, ActivityIndicator, StyleSheet } from "react-native";
 import * as Constants from "../constants/Constants";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -30,6 +30,7 @@ export default class PokemonInfo extends React.Component {
       }
     );
   }
+  logOut() {}
   getPokemonInfo() {
     const api = `${Constants.POKEMON_INFO}${this.state.name}`;
     fetch(api)
@@ -84,7 +85,7 @@ export default class PokemonInfo extends React.Component {
         {this.state.pokemonID ? (
           <Image
             source={this.state.pokemonID ? { uri: this.state.pokemonID } : null}
-            style={{ width: 200, height: 200 }}
+            style={{ width: 200, height: 170 }}
           />
         ) : (
           <ActivityIndicator size="large" />
@@ -101,13 +102,29 @@ export default class PokemonInfo extends React.Component {
           {this.state.height}
           {Constants.HEIGHT_VALUE}
         </Text>
-        {this.state.type.map(key => {
-          const colorText = Constants.TYPES_COLORS[key];
-          return <Text style={{ color: `${colorText}` }}>{key}</Text>;
-        })}
+        <View style={styles.row}>
+          {this.state.type.map(key => {
+            const colorText = Constants.TYPES_COLORS[key];
+            return (
+              <View
+                style={StyleSheet.flatten([
+                  styles.typeContainer,
+                  { backgroundColor: colorText }
+                ])}
+              >
+                <Text style={styles.typeText}>{key}</Text>
+              </View>
+            );
+          })}
+        </View>
+        <Text style={styles.titleMoves}>{Constants.MOVES}</Text>
         <View style={styles.row}>
           {this.state.moves.map(key => {
-            return <Text style={styles.informationText}>{key}</Text>;
+            return (
+              <View style={styles.boxStyle}>
+                <Text style={styles.informationText}>{key}</Text>
+              </View>
+            );
           })}
         </View>
       </LinearGradient>

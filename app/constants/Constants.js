@@ -47,4 +47,6 @@ export const POUNDS = " pounds";
 
 export const USER = "User";
 
-export const PASSWORD = "Bootcamp";
+export const PASSWORD = "bootcamp";
+
+export const MOVES = "Moves";

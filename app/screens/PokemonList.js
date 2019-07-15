@@ -5,14 +5,10 @@ import {
   FlatList,
   ActivityIndicator,
   Image,
-  TouchableOpacity,
-  Button
+  TouchableOpacity
 } from "react-native";
 import * as Constants from "../constants/Constants";
 import styles from "./styles";
-
-//AL HACER LAS PETICIONES A LA API PONER LA PETICION DENTRO DE UN TRY CATCH PARA TRAER EL
-//ERROR Y CONTROLAR
 
 export default class List extends React.Component {
   constructor(props) {
@@ -26,21 +22,33 @@ export default class List extends React.Component {
     this.renderCharacter = this.renderCharacter.bind(this);
     this.getPokemons = this.getPokemons.bind(this);
   }
-  static navigationOptions = {
-    headerTitle: (
-      <Image
-        source={require("../../assets/pokeball.png")}
-        style={styles.pokeballLogo}
-      />
-    ),
-    headerRight: <Button onPress={this.logOut} title="Log Out" />
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: (
+        <Image
+          source={require("../../assets/pokeball.png")}
+          style={styles.pokeballLogo}
+        />
+      ),
+      headerRight: (
+        <TouchableOpacity
+          onPress={() => {
+            console.warn("hello logout"), navigation.replace("Home");
+          }}
+        >
+          <Image
+            source={require("../../assets/exit.png")}
+            style={styles.logoutLogo}
+          />
+        </TouchableOpacity>
+      )
+    };
   };
 
   updateSearch = search => {
     this.setState({ search });
   };
-
-  logOut() {}
 
   getPokemons() {
     const api = `${Constants.RETRIEVE_POKEMONS_URI}${this.state.quantity}`;
@@ -51,8 +59,7 @@ export default class List extends React.Component {
           list: this.state.list.concat(res.results),
           quantity: this.state.quantity + 20
         })
-      )
-      .catch(console.warn(Constants.ERROR_RETRIEVING_POKEMONS));
+      );
   }
 
   componentDidMount() {

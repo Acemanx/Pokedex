@@ -21,10 +21,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "yellow"
   },
+  flatListContainer: {
+    backgroundColor: "yellow"
+  },
   informationText: {
+    fontSize: 13,
+    fontWeight: "bold"
+  },
+  boxStyle: {
+    height: 30,
+    width: 100,
     borderWidth: 1,
-    borderRadius: 5,
-    borderColor: "black"
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: "#3D7DCA",
+    margin: 5,
+    justifyContent: "center",
+    alignItems: "center"
   },
   container: {
     flex: 1,
@@ -35,15 +48,38 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold"
   },
+  titleMoves: {
+    fontSize: 17,
+    fontWeight: "bold",
+    color: "#003A70"
+  },
+  typeContainer: {
+    width: 55,
+    height: 55,
+    borderWidth: 1,
+    borderRadius: 30,
+    borderColor: "transparent",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 4
+  },
+  typeText: {
+    color: "black",
+    fontWeight: "bold"
+  },
   row: {
     flex: 1,
     flexDirection: "row",
-    marginVertical: 40
+    flexWrap: "wrap",
+    justifyContent: "space-around"
   },
   pokeballLogo: {
     marginLeft: 10,
     width: 30,
     height: 30
+  },
+  logoutLogo: {
+    marginRight: 6
   }
 });
 
