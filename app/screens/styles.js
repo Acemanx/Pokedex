@@ -43,6 +43,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
+  userInput: {
+    borderWidth: 1,
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: "#FFFFFF",
+    marginTop: 10,
+    textAlign: "center"
+  },
+  loginButton: {
+    backgroundColor: "#222224"
+  },
   container: {
     flex: 1,
     justifyContent: "center",

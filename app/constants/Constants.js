@@ -50,3 +50,5 @@ export const USER = "User";
 export const PASSWORD = "bootcamp";
 
 export const MOVES = "Moves";
+
+export const LOGIN_ERROR = "Wrong username or password";

@@ -43,7 +43,7 @@ export default class List extends React.Component {
       headerRight: (
         <TouchableOpacity
           onPress={() => {
-            console.warn("hello logout"), navigation.replace("Home");
+            navigation.replace("Home");
           }}
         >
           <Image
@@ -114,8 +114,7 @@ export default class List extends React.Component {
               horizontal={false}
               numColumns={2}
               data={list}
-              keyExtractor={(item, index) => index.toString()}
-              //keyExtractor={item => item.name}
+              keyExtractor={index => index.toString()}
               renderItem={({ item }) => this.renderCharacter(item)}
               onEndReached={this.getPokemons}
             />

@@ -26,11 +26,10 @@ export default class Login extends Component {
       (this.state.username == Constants.USER) &
       (this.state.password == Constants.PASSWORD)
     ) {
-      console.warn("entro al login");
       const { replace } = this.props.navigation;
       replace("PokemonList");
     } else {
-      Alert.alert("Wrong username or password");
+      Alert.alert(Constants.LOGIN_ERROR);
       this.textInput.clear();
     }
   }
@@ -40,23 +39,31 @@ export default class Login extends Component {
       <ScrollView style={styles.loginContainer}>
         <Image
           source={require("../../assets/pokeball_big.png")}
-          style={{ width: 150, height: 150 }}
+          style={{ width: 150, height: 150, marginBottom: 15 }}
         />
-        <Text style={{ fontSize: 27 }}>Login</Text>
+
         <TextInput
           placeholder="Username"
+          placeholderTextColor="#FFFFFF"
+          style={styles.userInput}
           onChangeText={username => this.setState({ username })}
         />
         <TextInput
           placeholder="Password"
           onChangeText={password => this.setState({ password })}
+          style={styles.userInput}
+          placeholderTextColor="#FFFFFF"
           secureTextEntry={true}
           ref={input => {
             this.textInput = input;
           }}
         />
         <View style={{ margin: 7 }} />
-        <Button onPress={this.validateUser.bind(this)} title="Submit" />
+        <Button
+          onPress={this.validateUser.bind(this)}
+          title="Login"
+          color="#222224"
+        />
       </ScrollView>
     );
   }
