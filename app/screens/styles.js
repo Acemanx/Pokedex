@@ -3,8 +3,6 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   pokemonCard: {
     flex: 1,
-    flexWrap: "wrap",
-    flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
     height: 173,
@@ -23,7 +21,7 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow"
   },
   informationText: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "bold"
   },
   boxStyle: {

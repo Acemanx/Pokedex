@@ -8,6 +8,7 @@ export default class PokemonInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pokemonNumber: "",
       pokemonID: "",
       name: "",
       type: [],
@@ -39,7 +40,7 @@ export default class PokemonInfo extends React.Component {
       headerStyle: {
         backgroundColor: "#FFCB05"
       },
-      title: navigation.getParam("name"),
+      title: Constants.POKEMON_INFO_TEXT,
       headerRight: <View />
     };
   };
@@ -58,7 +59,8 @@ export default class PokemonInfo extends React.Component {
             type: types,
             movesUrl: res.types[0].type.url,
             weight: res.weight,
-            height: res.height
+            height: res.height,
+            pokemonNumber: res.id
           },
           () => {
             this.getPokemonMoves();
@@ -100,7 +102,9 @@ export default class PokemonInfo extends React.Component {
         ) : (
           <ActivityIndicator size="large" />
         )}
-        <Text style={styles.titleText}>{this.state.name}</Text>
+        <Text style={styles.titleText}>
+          {this.state.name} #{this.state.pokemonNumber}
+        </Text>
 
         <Text>
           {Constants.WEIGHT}

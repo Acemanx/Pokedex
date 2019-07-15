@@ -60,14 +60,18 @@ export default class List extends React.Component {
 
   getPokemons() {
     const api = `${Constants.RETRIEVE_POKEMONS_URI}${this.state.quantity}`;
+    console.warn(api);
     fetch(api)
       .then(res => res.json())
       .then(res =>
         this.setState({
-          list: this.state.list.concat(res.results),
-          quantity: this.state.quantity + 20
+          list: this.state.list.concat(res.results)
         })
       );
+
+    this.setState({
+      quantity: this.state.quantity + 20
+    });
   }
 
   componentDidMount() {
@@ -108,7 +112,6 @@ export default class List extends React.Component {
         <View>
           {list ? (
             <FlatList
-              horizontal={false}
               numColumns={2}
               data={list}
               keyExtractor={index => index.toString()}
